@@ -65,8 +65,8 @@ canvas.addEventListener('mousemove', ({ offsetX, offsetY }) => {
   ctx.globalCompositeOperation = 'lighter';
   circle(
     ctx,
-    offsetX / window.devicePixelRatio,
-    offsetY / window.devicePixelRatio,
+    offsetX * window.devicePixelRatio,
+    offsetY * window.devicePixelRatio,
     100,
     color
   );
