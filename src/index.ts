@@ -27,8 +27,8 @@ const circle = (
 };
 
 const fade = () => {
-  ctx.fillStyle = 'rgba(0,0,0,0.1)';
-  ctx.globalCompositeOperation = 'source-over';
+  ctx.fillStyle = 'rgb(90%,90%,90%)';
+  ctx.globalCompositeOperation = 'multiply';
   ctx.beginPath();
   ctx.rect(0, 0, canvas.width, canvas.height);
   ctx.fill();
