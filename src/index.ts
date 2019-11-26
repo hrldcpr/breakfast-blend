@@ -3,7 +3,7 @@ const GREEN = '#04eb04';
 const BLUE = '#0404eb';
 
 const canvas = document.getElementById('main') as HTMLCanvasElement;
-const ctx = canvas.getContext('2d');
+const ctx = canvas.getContext('2d')!;
 
 const updateCanvas = () => {
   // canvas width and height need to be set separately from css width and height.
