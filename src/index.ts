@@ -18,7 +18,7 @@ const circle = (
   x: number,
   y: number,
   r: number,
-  fillStyle: string
+  fillStyle: string,
 ) => {
   ctx.fillStyle = fillStyle;
   ctx.beginPath();
