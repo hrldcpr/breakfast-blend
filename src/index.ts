@@ -34,25 +34,36 @@ const fade = () => {
   ctx.fill();
 };
 
+const drawTouch = (x: number, y: number) => {
+  const color = [RED, GREEN, BLUE][Math.floor(Math.random() * 3)];
+  ctx.globalCompositeOperation = 'lighter';
+  circle(
+    ctx,
+    x * window.devicePixelRatio,
+    y * window.devicePixelRatio,
+    100,
+    color,
+  );
+};
+
 const animate = () => {
+  // TODO also blur
   fade();
   requestAnimationFrame(animate);
 };
 
 window.addEventListener('resize', updateCanvas);
-updateCanvas();
 
-canvas.addEventListener('mousemove', ({ offsetX, offsetY }) => {
-  const color = [RED, GREEN, BLUE][Math.floor(Math.random() * 3)];
-  ctx.filter = 'none';
-  ctx.globalCompositeOperation = 'lighter';
-  circle(
-    ctx,
-    offsetX * window.devicePixelRatio,
-    offsetY * window.devicePixelRatio,
-    100,
-    color
-  );
+canvas.addEventListener('mousemove', e => {
+  drawTouch(e.offsetX, e.offsetY);
 });
 
+canvas.addEventListener('touchmove', e => {
+  // TODO touchstart.preventDefault? touch-action=none?
+  for (const touch of e.changedTouches) {
+    drawTouch(touch.clientX, touch.clientY);
+  }
+});
+
+updateCanvas();
 requestAnimationFrame(animate);
