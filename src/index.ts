@@ -1,6 +1,4 @@
-const RED = '#eb0404';
-const GREEN = '#04eb04';
-const BLUE = '#0404eb';
+const RADIUS = 100;
 
 const canvas = document.getElementById('main') as HTMLCanvasElement;
 const ctx = canvas.getContext('2d')!;
@@ -27,7 +25,7 @@ const circle = (
 };
 
 const fade = () => {
-  ctx.fillStyle = 'rgb(90%,90%,90%)';
+  ctx.fillStyle = 'rgb(90%, 90%, 90%)';
   ctx.globalCompositeOperation = 'multiply';
   ctx.beginPath();
   ctx.rect(0, 0, canvas.width, canvas.height);
@@ -35,13 +33,13 @@ const fade = () => {
 };
 
 const drawTouch = (x: number, y: number) => {
-  const color = [RED, GREEN, BLUE][Math.floor(Math.random() * 3)];
+  const color = `hsl(${Math.random()}turn, 100%, 50%)`;
   ctx.globalCompositeOperation = 'lighter';
   circle(
     ctx,
     x * window.devicePixelRatio,
     y * window.devicePixelRatio,
-    100,
+    RADIUS,
     color,
   );
 };
