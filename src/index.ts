@@ -11,7 +11,6 @@ const updateCanvas = () => {
   const bounds = canvas.getBoundingClientRect();
   canvas.width = bounds.width * window.devicePixelRatio;
   canvas.height = bounds.height * window.devicePixelRatio;
-  draw();
 };
 
 const circle = (
@@ -38,22 +37,6 @@ const fade = () => {
 const animate = () => {
   fade();
   requestAnimationFrame(animate);
-};
-
-const draw = () => {
-  const x = canvas.width / 2;
-  const y = canvas.height / 2;
-  const r = 100;
-  const d = r / 2;
-
-  ctx.globalCompositeOperation = 'lighter';
-
-  ctx.filter = 'blur(4px)';
-  circle(ctx, x - d, y - d, r, RED);
-  ctx.filter = 'blur(2px)';
-  circle(ctx, x + d, y - d, r, GREEN);
-  ctx.filter = 'blur(1px)';
-  circle(ctx, x, y + d, r, BLUE);
 };
 
 window.addEventListener('resize', updateCanvas);
